@@ -25,16 +25,12 @@ def sinusoid(t, amplitude=1.0, frequency=1.0, phase=0.0):
     return amplitude * np.sin(2 * np.pi * frequency * t + phase)
 
 
-def time_axis(t_min, t_max):
-    duration = abs(t_max - t_min)
-
-    if duration <= 1:
-        num = 1000
-    elif duration <= 10:
-        num = 2000
-    elif duration <= 100:
-        num = 5000
+def time_axis(t_min, t_max, dt=None, num_points=1000):
+    """
+    Generate time axis from t_min to t_max.
+    """
+    if dt is not None:
+        t = np.arange(t_min, t_max + dt, dt)
     else:
-        num = 10000  # cap for performance
-
-    return np.linspace(t_min, t_max, num)
+        t = np.linspace(t_min, t_max, num_points)
+    return t
