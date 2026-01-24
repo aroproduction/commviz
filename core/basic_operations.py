@@ -20,3 +20,4 @@ def time_reverse(x, t):
 # Amplitude scaling
 def amplitude_scale(x, factor=1.0):
     return x * factor
+
